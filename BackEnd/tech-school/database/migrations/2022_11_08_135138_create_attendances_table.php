@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('attendances', function (Blueprint $table) {
             $table->id();
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->integer('role');
-            $table->rememberToken();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->timestamps();
+            $table->foreignId('student_id')->constrained();
+            $table->foreignId('classe_id')->constrained();
+            $table->smallInteger('tinh_trang')->default(0);
+            $table->date('ngay_nghi_hoc')->nullable();
+            $table->string('ly_do')->nullable();
+            $table->timestamps(); 
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('attendances');
     }
 };
