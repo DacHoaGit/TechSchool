@@ -2,12 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Enums\UserRoleEnum;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 
-class RegisterRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,14 +25,8 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['email', 'unique:users'],
-            'password' => ['required', 'confirmed', Password::min(8)]
-        ];
-    }
-    public function messages()
-    {
-        return [
-            'email.unique' => 'Email already exists',
+            'email' => ['email'],
+            'password' => ['required', Password::min(8)]
         ];
     }
 }
