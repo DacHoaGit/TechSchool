@@ -16,9 +16,11 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('mo_ta');
-            $table->float('hoc_phi');
+            $table->longText('mo_ta');
+            $table->decimal('hoc_phi', 8, 2);
             $table->integer('so_buoi');
+            $table->string('anh_khoa_hoc');
+            $table->smallInteger('tinh_trang')->default(0);
             $table->timestamps();
         });
     }
