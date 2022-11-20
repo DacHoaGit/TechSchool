@@ -23,6 +23,7 @@ return new class extends Migration
             $table->float('luong_giao_vien');
             $table->integer('ca_hoc');
             $table->string('thu_trong_tuan');
+            $table->smallInteger('tinh_trang')->default(0);
             $table->timestamps();
         });
     }
